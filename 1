@@ -1,0 +1,76 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Funzione per stampare la scacchiera
+void stampaScacchiera(const vector<vector<char>>& scacchiera) {
+    for (const auto& riga : scacchiera) {
+        for (char cella : riga) {
+            cout << cella << " ";
+        }
+        cout << endl;
+    }
+}
+
+// Funzione per verificare se un giocatore ha vinto
+bool haVinto(const vector<vector<char>>& scacchiera, char segno) {
+    // Controllo delle righe e colonne
+    for (int i = 0; i < 3; ++i) {
+        if ((scacchiera[i][0] == segno && scacchiera[i][1] == segno && scacchiera[i][2] == segno) ||
+            (scacchiera[0][i] == segno && scacchiera[1][i] == segno && scacchiera[2][i] == segno)) {
+            return true;
+        }
+    }
+
+    // Controllo delle diagonali
+    if ((scacchiera[0][0] == segno && scacchiera[1][1] == segno && scacchiera[2][2] == segno) ||
+        (scacchiera[0][2] == segno && scacchiera[1][1] == segno && scacchiera[2][0] == segno)) {
+        return true;
+    }
+
+    return false;
+}
+
+// Funzione per controllare se la mossa è valida
+bool mossaValida(const vector<vector<char>>& scacchiera, int riga, int colonna) {
+    return (riga >= 0 && riga < 3 && colonna >= 0 && colonna < 3 && scacchiera[riga][colonna] == ' ');
+}
+
+// Funzione principale per la console game "Tris"
+int main() {
+    vector<vector<char>> scacchiera(3, vector<char>(3, ' '));
+    char giocatore = 'X';
+    int riga, colonna;
+
+    cout << "Benvenuto al gioco del Tris!" << endl;
+
+    do {
+        // Stampa la scacchiera
+        cout << "Scacchiera corrente:" << endl;
+        stampaScacchiera(scacchiera);
+
+        // Richiede la mossa del giocatore
+        cout << "Giocatore " << giocatore << ", inserisci la tua mossa (riga e colonna): ";
+        cin >> riga >> colonna;
+
+        // Verifica la validità della mossa
+        if (mossaValida(scacchiera, riga, colonna)) {
+            scacchiera[riga][colonna] = giocatore;
+
+            // Verifica se il giocatore ha vinto
+            if (haVinto(scacchiera, giocatore)) {
+                cout << "Il giocatore " << giocatore << " ha vinto!" << endl;
+                break;
+            }
+
+            // Cambia il turno del giocatore
+            giocatore = (giocatore == 'X') ? 'O' : 'X';
+        } else {
+            cout << "Mossa non valida. Riprova." << endl;
+        }
+
+    } while (true);
+
+    return 0;
+}
