@@ -88,23 +88,6 @@ void stampaScacchiera(const vector<vector<char>>& scacchiera) {
         cout << endl;
     }
 }
-
-// Funzione per verificare se un giocatore ha vinto
-bool haVinto(const vector<vector<char>>& scacchiera, char segno) {
-    // Controllo delle righe e colonne
-    for (int i = 0; i < 3; ++i) {
-        if ((scacchiera[i][0] == segno && scacchiera[i][1] == segno && scacchiera[i][2] == segno) ||
-            (scacchiera[0][i] == segno && scacchiera[1][i] == segno && scacchiera[2][i] == segno)) {
-            return true;
-        }
-    }
-
-    // Controllo delle diagonali
-    if ((scacchiera[0][0] == segno && scacchiera[1][1] == segno && scacchiera[2][2] == segno) ||
-        (scacchiera[0][2] == segno && scacchiera[1][1] == segno && scacchiera[2][0] == segno)) {
-        return true;
-    }
-
     return false;
 }
 
