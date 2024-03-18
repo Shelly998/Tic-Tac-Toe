@@ -23,18 +23,7 @@ bool haVinto(const vector<vector<char>>& scacchiera, char segno) {
         }
     }
 
-    // Controllo delle diagonali
-    if ((scacchiera[0][0] == segno && scacchiera[1][1] == segno && scacchiera[2][2] == segno) ||
-        (scacchiera[0][2] == segno && scacchiera[1][1] == segno && scacchiera[2][0] == segno)) {
-        return true;
-    }
-
-    return false;
-}
-
-// Funzione per controllare se la mossa è valida
-bool mossaValida(const vector<vector<char>>& scacchiera, int riga, int colonna) {
-    return (riga >= 0 && riga < 3 && colonna >= 0 && colonna < 3 && scacchiera[riga][colonna] == ' ');
+    // Controllo delle d
 }
 
 // Funzione principale per la console game "Tris"
