@@ -5,13 +5,7 @@ using namespace std;
 
 // Funzione per stampare la scacchiera
 void stampaScacchiera(const vector<vector<char>>& scacchiera) {
-    for (const auto& riga : scacchiera) {
-        for (char cella : riga) {
-            cout << cella << " ";
-        }
-        cout << endl;
-    }
-
+    for (const aut
 bool haVinto(const vector<vector<char>>& scacchiera, char segno) {
     // Controllo delle righe e colonne
     for (int i = 0; i < 3; ++i) {
