@@ -6,11 +6,7 @@ using namespace std;
 // Funzione per stampare la scacchiera
 void stampaScacchiera(const vector<vector<char>>& scacchiera) {
     for (const aut
-bool haVinto(const vector<vector<char>>& scacchiera, char segno) {
-    // Controllo delle righe e colonne
-    for (int i = 0; i < 3; ++i) {
-        if ((scacchiera[i][0] == segno && scacchiera[i][1] == segno && scacchiera[i][2] == segno) ||
-            (scacchiera[0][i] == segno && scacchiera[1][i] == segno && scacchiera[2][i] == segno)) {
+bool haVinto(const vector<vec== segno)) {
             return true;
         }
     }
